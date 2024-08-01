@@ -1,0 +1,28 @@
+<div class="container-lg">
+    <h1 class="text-center">Image to Text Converter</h1>
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="row g-2">
+            <div class="col-md">
+                <div *ngIf="isPreview">
+                    <img [src]=imageSrc style="max-width: 100%;">
+                </div>
+                <div class="input-group">
+                    <input class="form-control" type="file" (change)="onFileSelected($event)">
+                    <button type="button" class="btn btn-outline-secondary" (click)="onUpload()"
+                        [disabled]="!isPreview">Generate</button>
+                </div>
+            </div>
+            <div class="col">
+                <textarea class="form-control" style="height: 100%;" disabled>{{text}}</textarea>
+            </div>
+            <div class="row g-1 mt-2">
+                <div class="alert alert-success status" role="alert" *ngIf="isSuccess">
+                    Successfully Generated!
+                </div>
+                <div class="alert alert-danger status" role="alert" *ngIf="isError">
+                    Invalid File Type!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
